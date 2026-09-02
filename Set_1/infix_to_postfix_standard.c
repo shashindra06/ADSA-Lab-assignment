@@ -73,15 +73,27 @@ void infixToPostfix(char infix[], char postfix[]) {
     postfix[postfixIndex] = '\0';
 }
 
-int main() {
-
-    char infix[] = "3+4*5";
+int main()
+{
+    char infix[MAX];
     char postfix[MAX];
+
+    printf("Enter an infix expression: ");
+    fgets(infix, MAX, stdin);
+
+    // Remove the newline added by fgets()
+    for (int i = 0; infix[i] != '\0'; i++)
+    {
+        if (infix[i] == '\n')
+        {
+            infix[i] = '\0';
+            break;
+        }
+    }
 
     infixToPostfix(infix, postfix);
 
-    printf("Infix:   %s\n", infix);
-    printf("Postfix: %s\n", postfix);
+    printf("Postfix expression: %s\n", postfix);
 
     return 0;
 }
