@@ -2,61 +2,76 @@
 
 #define MAX 100
 
-int precedence(char operator) {
-    if (operator == '*' || operator == '/') {
+int precedence(char operator)
+{
+    if (operator == '*' || operator == '/')
+    {
         return 2;
     }
 
-    if (operator == '+' || operator == '-') {
+    if (operator == '+' || operator == '-')
+    {
         return 1;
     }
 
     return 0;
 }
 
-int isOperator(char ch) {
+int isOperator(char ch)
+{
     return ch == '+' || ch == '-' || ch == '*' || ch == '/';
 }
 
-void infixToPostfix(char infix[], char postfix[]) {
+int isOperand(char ch)
+{
+    return (ch >= 'a' && ch <= 'z') ||
+           (ch >= 'A' && ch <= 'Z') ||
+           (ch >= '0' && ch <= '9');
+}
 
+void infixToPostfix(char infix[], char postfix[])
+{
     char stack[MAX];
     int top = -1;
     int postfixIndex = 0;
 
-    for (int i = 0; infix[i] != '\0'; i++) {
-
+    for (int i = 0; infix[i] != '\0'; i++)
+    {
         char ch = infix[i];
 
         // Operand
-        if (ch >= '0' && ch <= '9') {
+        if (isOperand(ch))
+        {
             postfix[postfixIndex++] = ch;
         }
 
         // Opening parenthesis
-        else if (ch == '(') {
+        else if (ch == '(')
+        {
             stack[++top] = ch;
         }
 
         // Closing parenthesis
-        else if (ch == ')') {
-
-            while (top != -1 && stack[top] != '(') {
+        else if (ch == ')')
+        {
+            while (top != -1 && stack[top] != '(')
+            {
                 postfix[postfixIndex++] = stack[top--];
             }
 
-            if (top != -1) {
+            if (top != -1)
+            {
                 top--;       // Remove '('
             }
         }
 
         // Operator
-        else if (isOperator(ch)) {
-
+        else if (isOperator(ch))
+        {
             while (top != -1 &&
                    stack[top] != '(' &&
-                   precedence(stack[top]) >= precedence(ch)) {
-
+                   precedence(stack[top]) >= precedence(ch))
+            {
                 postfix[postfixIndex++] = stack[top--];
             }
 
@@ -65,7 +80,8 @@ void infixToPostfix(char infix[], char postfix[]) {
     }
 
     // Pop remaining operators
-    while (top != -1) {
+    while (top != -1)
+    {
         postfix[postfixIndex++] = stack[top--];
     }
 
@@ -81,7 +97,7 @@ int main()
     printf("Enter an infix expression: ");
     fgets(infix, MAX, stdin);
 
-    // Remove the newline added by fgets()
+    // Remove newline added by fgets()
     for (int i = 0; infix[i] != '\0'; i++)
     {
         if (infix[i] == '\n')
