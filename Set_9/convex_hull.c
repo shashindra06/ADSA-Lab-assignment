@@ -227,3 +227,23 @@ int main()
 
     return 0;
 }
+
+// Enter number of points: 8
+
+// Enter coordinates (x y):
+// 0 0
+// 2 1
+// 4 0
+// 3 3
+// 2 2
+// 1 3
+// 0 4
+// 4 4
+
+// Convex Hull Points:
+// (0, 0)
+// (4, 0)
+// (4, 4)
+// (0, 4)
+
+// Total points on convex hull: 4

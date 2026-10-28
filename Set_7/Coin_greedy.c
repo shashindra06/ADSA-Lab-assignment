@@ -61,3 +61,24 @@ int main() {
 
     return 0;
 }
+
+
+// Available denominations: 100, 50, 20, 10, 5, 2, 1
+
+// Enter the amount: 286
+
+// Greedy selection process:
+// ----------------------------------------
+// Remaining amount = 286 -> Select coin 100
+// Remaining amount = 186 -> Select coin 100
+// Remaining amount = 86 -> Select coin 50
+// Remaining amount = 36 -> Select coin 20
+// Remaining amount = 16 -> Select coin 10
+// Remaining amount = 6 -> Select coin 5
+// Remaining amount = 1 -> Select coin 1
+// ----------------------------------------
+
+// Coin change completed successfully.
+// Original amount      : 286
+// Total number of coins: 7
+// Amount remaining     : 0

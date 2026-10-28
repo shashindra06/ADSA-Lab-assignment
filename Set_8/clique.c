@@ -127,3 +127,15 @@ int main()
 
     return 0;
 }
+
+// Enter number of vertices: 5
+// Enter number of edges: 6
+// Enter size of clique to find: 3
+
+// Enter 6 edges (u v):
+// 0 1
+// 0 2
+// 1 2
+// 1 3
+// 2 3
+// 3 4

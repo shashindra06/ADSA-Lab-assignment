@@ -108,3 +108,6 @@ int main()
 
     return 0;
 }
+
+// Enter text: ABABDABACDABABCABAB
+// Enter pattern: ABABCABAB
